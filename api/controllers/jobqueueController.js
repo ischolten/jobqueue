@@ -39,5 +39,15 @@ exports.updateJobStatus = function(req, res) {
 		}
 		res.send("Status updated to " + job.status);
 	});
+	
 
+}
+
+exports.removeJob = function(req, res) {
+	Job.remove({_id: req.params.id}, function(err, task) {
+		if(err) {
+			res.send(err);
+		}
+		res.send("Task successfully deleted.");
+	})
 }

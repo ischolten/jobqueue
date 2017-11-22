@@ -19,4 +19,7 @@ module.exports = function(app) {
 	app.route('/jobs/update/:id/:status')
 		.get(jobQueue.updateJobStatus);
 
+	app.route('/jobs/:id/remove')
+		.get(jobQueue.removeJob);
+
 };
