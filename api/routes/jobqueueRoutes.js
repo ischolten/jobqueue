@@ -13,4 +13,10 @@ module.exports = function(app) {
 	app.route('/jobs/create/:name')
 		.get(jobQueue.createJob);
 
+	app.route('/jobs/:id')
+		.get(jobQueue.getJobStatus);
+
+	app.route('/jobs/update/:id/:status')
+		.get(jobQueue.updateJobStatus);
+
 };
