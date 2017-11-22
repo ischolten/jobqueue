@@ -13,7 +13,7 @@ exports.getJobs = function(req, res) {
 };
 
 exports.createJob = function(req, res) {
-	var newJob = new Job(req.body);
+	var newJob = new Job({"name":req.params.name});
 	newJob.save(function(err, job) {
 		if(err) {
 			res.send(err);
