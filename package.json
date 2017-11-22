@@ -1,0 +1,20 @@
+{
+  "name": "jobqueue",
+  "version": "1.0.0",
+  "description": "job queue to fetch data from a url and store the results in a database",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ischolten/jobqueue.git"
+  },
+  "author": "Iris Scholten",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ischolten/jobqueue/issues"
+  },
+  "homepage": "https://github.com/ischolten/jobqueue#readme"
+}
