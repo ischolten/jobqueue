@@ -4,7 +4,7 @@
   "description": "job queue to fetch data from a url and store the results in a database",
   "main": "index.js",
   "scripts": {
-    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\"",
     "start": "nodemon server.js"
   },
   "repository": {
@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/ischolten/jobqueue/issues"
   },
-  "homepage": "https://github.com/ischolten/jobqueue#readme"
+  "homepage": "https://github.com/ischolten/jobqueue#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.4"
+  }
 }
