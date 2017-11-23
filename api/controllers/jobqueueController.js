@@ -57,10 +57,11 @@ exports.removeJob = function(req, res) {
 }
 
 exports.getNext = function(req, res) {
-	Job.find('status',['pending'], function(err, job) {
+	Job.find({status:['pending']}, function(err, job) {
 		if(err) {
 			res.send(err);
 		}
+		console.log(job.length);
 		if(job.length > 0) {
 			var id = job[0].id;
 			Job.findById(id, function(err, job) {
@@ -76,11 +77,11 @@ exports.getNext = function(req, res) {
 						res.send(err);
 					} 
 					var url = job.url;
-					Job.findOneAndUpdate({_id: job.id}, {"status":['completed'], "html":body}, {new: true}, function(err, job) {
+					Job.findOneAndUpdate({_id: job.id}, {"status":['completed'], "html":body.body}, {new: true}, function(err, job) {
 						if(err) {
 							res.send(err);
 						}
-						res.send(job);
+						res.send(job.id + " is complete." );
 					})
 				});
 				
