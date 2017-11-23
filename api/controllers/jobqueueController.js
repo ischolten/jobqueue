@@ -29,7 +29,7 @@ exports.createJob = function(req, res) {
 }
 
 
-exports.getJobStatus = function(req, res) {
+exports.getStatus = function(req, res) {
 	Job.findById(req.params.id, function(err, job) {
 		if(err) {
 			res.send(err);
@@ -38,13 +38,26 @@ exports.getJobStatus = function(req, res) {
 	});
 }
 
-exports.updateJobStatus = function(req, res) {
-	Job.findOneAndUpdate({_id: req.params.id}, {"status":[req.params.status]}, {new: true}, function(err, job) {
+exports.getHTML = function(req, res) {
+	Job.findById(req.params.id, function(err, job) {
 		if(err) {
 			res.send(err);
 		}
-		res.send("Status updated to " + job.status);
+		res.send(job.html);
 	});
+}
+
+exports.updateJobStatus = function(req, res) {
+	if(req.params.id && req.params.status) {
+		Job.findOneAndUpdate({_id: req.params.id}, {"status":[req.params.status]}, {new: true}, function(err, job) {
+			if(err) {
+				res.send(err);
+			}
+			res.send("Status updated to " + job.status);
+		});
+	} else {
+		res.send("Enter an id and status")
+	}
 }
 
 exports.removeJob = function(req, res) {

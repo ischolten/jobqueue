@@ -7,19 +7,28 @@ module.exports = function(app) {
 		.get(jobQueue.getJobs)
 		.post(jobQueue.createJob);
 
-	app.route('/jobs/get') 
-		.get(jobQueue.getJobs);
+	app.route('/jobs/getStatus/:id') 
+		.get(jobQueue.getStatus);
 
-	app.route('/jobs/create/:name')
-		.get(jobQueue.createJob);
+	app.route('/jobs/getHTML/:id') 
+		.get(jobQueue.getHTML);
 
-	app.route('/jobs/:id')
-		.get(jobQueue.getJobStatus);
+	app.route('/jobs/fetchNext')
+		.get(jobQueue.getNext)
+		.post(jobQueue.getNext);
+
+	app.route('/jobs/create/:url')
+		.get(jobQueue.createJob)
+		.post(jobQueue.createJob);
 
 	app.route('/jobs/update/:id/:status')
-		.get(jobQueue.updateJobStatus);
+		.get(jobQueue.updateJobStatus)
+		.post(jobQueue.updateJobStatus);
 
-	app.route('/jobs/:id/remove')
-		.get(jobQueue.removeJob);
+	app.route('/jobs/remove/:id')
+		.get(jobQueue.removeJob)
+		.delete(jobQueue.removeJob);
+
+
 
 };
