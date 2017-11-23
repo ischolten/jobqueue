@@ -5,7 +5,8 @@ module.exports = function(app) {
 
 	app.route('/jobs')
 		.get(jobQueue.getJobs)
-		.post(jobQueue.createJob);
+		.post(jobQueue.createJob)
+		.delete(jobQueue.removeJob);
 
 	app.route('/jobs/getStatus/:id') 
 		.get(jobQueue.getStatus);
