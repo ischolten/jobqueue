@@ -38,7 +38,11 @@ Every time a url is added, it is pending by default. When the user tells it to f
 ### Instructions
 1. Clone repository and make sure you have all of the required packages.
 
-2. Follow Commands:
+2. To run code and start database:
+`npm start`
+`mongod`
+
+3. Follow Commands:
 
 * To see jobs:
 
