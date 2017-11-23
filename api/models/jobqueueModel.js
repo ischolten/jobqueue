@@ -4,21 +4,25 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var JobSchema = new Schema({
-	name: {
-		type: String,
-		required: 'Please enter the name of the job'
-	},
-	Created_date: {
-		type: Date,
-		default: Date.now
-	},
-	status: {
-		type: [{
-			type: String,
-			enum: ['pending', 'in progress', 'completed']
-		}],
-		default: ['pending']
-	}
+  url: {
+    type: String,
+    required: 'Enter a url'
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  status: {
+    type: [{
+      type: String,
+      enum: ['pending', 'completed']
+    }],
+    default: ['pending']
+  },
+  html: {
+    type: String,
+    default: null
+  }
 });
 
 module.exports = mongoose.model('Jobs', JobSchema);
