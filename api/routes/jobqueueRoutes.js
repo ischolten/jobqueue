@@ -8,6 +8,9 @@ module.exports = function(app) {
 		.post(jobQueue.createJob)
 		.delete(jobQueue.removeJob);
 
+	app.route('/jobs/:id')
+		.get(jobQueue.getJob);
+
 	app.route('/jobs/getStatus/:id') 
 		.get(jobQueue.getStatus);
 
@@ -29,7 +32,5 @@ module.exports = function(app) {
 	app.route('/jobs/remove/:id')
 		.get(jobQueue.removeJob)
 		.delete(jobQueue.removeJob);
-
-
 
 };

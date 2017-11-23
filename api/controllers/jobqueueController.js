@@ -28,6 +28,19 @@ exports.createJob = function(req, res) {
 	});
 }
 
+exports.getJob = function(req, res) {
+	if(req.params.id) {
+		Job.findById(req.params.id, function(err, job) {
+			if(err) {
+				res.send(err);
+			}
+			res.send(job);
+		});
+	} else {
+		req.send("enter id");
+	}
+	
+}
 
 exports.getStatus = function(req, res) {
 	Job.findById(req.params.id, function(err, job) {
@@ -61,20 +74,21 @@ exports.updateJobStatus = function(req, res) {
 }
 
 exports.removeJob = function(req, res) {
-	Job.remove({_id: req.params.id}, function(err, task) {
+	Job.remove({_id: req.params.id}, function(err, job) {
 		if(err) {
 			res.send(err);
 		}
-		res.send("Task successfully deleted.");
+		res.send("Job was successfully deleted.");
 	})
 }
+
+
 
 exports.getNext = function(req, res) {
 	Job.find({status:['pending']}, function(err, job) {
 		if(err) {
 			res.send(err);
 		}
-		console.log(job.length);
 		if(job.length > 0) {
 			var id = job[0].id;
 			Job.findById(id, function(err, job) {
