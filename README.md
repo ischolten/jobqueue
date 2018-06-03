@@ -9,7 +9,7 @@ The required packages in this project are:
 * Request
 
 ### Implementation
-I setup a mongdb database that would have the following schema.
+Database has the following schema:
 
 `
 url: {
